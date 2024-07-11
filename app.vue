@@ -31,7 +31,7 @@
                 class="px-4 py-1 bg-white border border-gray-500 text-black text-lg rounded-md">
                 ↻
         </button>
-        <input type="number" v-model.number="skipSeconds" placeholder="Skip seconds"
+        <input type="number" v-model.number="skipSeconds"  placeholder="Skip seconds"
               class="p-1 border border-gray-400 rounded w-20 text-center"/>
         <button @click="skipVideo(skipSeconds)"
                 class="px-4 py-1 bg-white border border-gray-500 text-black text-lg rounded-md">
@@ -75,6 +75,7 @@ export default {
       isPlaying: false,
       isRepeating: false,
       repeatInterval: null,
+      maxVideoSeconds: 0,
     };
   },
   methods: {
@@ -82,6 +83,9 @@ export default {
       const videoPlayer = this.$refs.videoPlayer;
       videoPlayer.src = this.videoUrl;
       videoPlayer.load();
+      videoPlayer.addEventListener('loadedmetadata', () => {
+        this.maxVideoSeconds = Math.floor(videoPlayer.duration);
+      });
     },
     playPauseVideo() {
       const videoPlayer = this.$refs.videoPlayer;
