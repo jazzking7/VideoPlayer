@@ -2,6 +2,11 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Clone the repository
+```bash
+git clone https://github.com/jazzking7/VideoPlayer.git
+```
+
 ## Setup
 
 Make sure to install the dependencies:
